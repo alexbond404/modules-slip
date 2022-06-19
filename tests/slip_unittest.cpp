@@ -100,6 +100,9 @@ TEST_F(SlipRecvTest, TestRecvSeveral) {
     len = slip_recv(&slip);
     ASSERT_EQ(len, 4);
     ASSERT_EQ(memcmp(this->buf, "\x05\x06\x07\x08", 4), 0);
+
+    len = slip_recv(&slip);
+    ASSERT_EQ(len, 0);
 }
 
 // Test receive timeout

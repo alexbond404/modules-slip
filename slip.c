@@ -148,7 +148,9 @@ int slip_recv(slip_struct *pSlip)
 {
     if (pSlip->buf_unproc)
     {
-        return slip_proc(pSlip, pSlip->buf_unproc, pSlip->usBufLenUnproc);
+        uint8_t *ptr = pSlip->buf_unproc;
+        pSlip->buf_unproc = NULL;
+        return slip_proc(pSlip, ptr, pSlip->usBufLenUnproc);
     }
     else
     {
